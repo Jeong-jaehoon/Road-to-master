@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}>
+    <title>SANTA (System for Analysis of National Trekking Accidents)</title>
+    <style>
+        html, body {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+        }
+        #container {
+          width: 100%;
+          height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="topbar">
+    <a class="navbar-brand" href="/">
+        <img src="static/santa_logo.png" style="width: 100px; height:auto;margin: 10px 0 10px 30px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/model">Model</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/analysis">Analysis</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/information">Information</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+  <div id="container"></div>
+</body>
+
+</html>
+<script src="{{ url_for('static',filename='js/three.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/tween.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/tf.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/TrackballControls.js') }}"></script>
+<script src="{{ url_for('static',filename='js/tensorspace.min.js') }}"></script>
+<script>
+    let modelContainer = document.getElementById("container");
+    let model = new TSP.models.Sequential(modelContainer);
+    model.add(new TSP.layers.GreyscaleInput());
+    model.add(new TSP.layers.Dense({units:512}));
+    model.add(new TSP.layers.Dense({units:256}));
+    model.add(new TSP.layers.Dense({units:64}));
+    model.add(new TSP.layers.Dense({units:64}));
+    model.add(new TSP.layers.Dense({units:16}));
+    model.add(new TSP.layers.Dense({units:16}));
+    model.add(new TSP.layers.Dense({units:8}));
+    model.add(new TSP.layers.Dense({units:8}));
+    model.add(new TSP.layers.Dense({units:4}));
+    model.add(new TSP.layers.Dense({units:4}));
+    model.add(new TSP.layers.Output1d({
+      outputs: ["0", "1", "2"],
+        units: 3,
+        overview : true,
+        name: 'output'
+    }));
+    model.load({
+      type: "tfjs",
+      url: "https://tensorspace.org/assets/model/lenet/mnist.json"
+    });
+    model.init();
+</script>

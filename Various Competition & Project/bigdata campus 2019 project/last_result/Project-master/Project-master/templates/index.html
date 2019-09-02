@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}>
+    {% block style %}{% endblock style %}
+    <title>SANTA (System for Analysis of National Trekking Accidents)</title>
+    <script type="text/javascript">
+        var bDisplay = true;
+        function doDisplay() {
+            var con = document.getElementById("myDIV");
+            con.style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="topbar">
+    <a class="navbar-brand" href="/">
+        <img src="static/santa_logo.png" style="width: 100px; height:auto;margin: 10px 0 10px 30px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/model">Model</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/analysis">Analysis</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/information">Information</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+<div class="container-fluid">
+    {% block contents %}
+    <div id="map" style='height:100vh;'></div>
+    <div id="menu_wrap" class="vertical-nav">
+        <div class="row" id="region_select">
+            <div class="col">
+                <select name="selOne" id="selOne" onchange="sidoChange(this, 'selTwo'),showsido(this),doDisplay()">
+                    <option style="color:white" value="default">---시,도---</option>
+                    <option value="42"> 강원도</option>
+                    <option value="41"> 경기도</option>
+                    <option value="48"> 경상남도</option>
+                    <option value="47"> 경상북도</option>
+                    <option value="29"> 광주광역시</option>
+                    <option value="27"> 대구광역시</option>
+                    <option value="30"> 대전광역시</option>
+                    <option value="26"> 부산광역시</option>
+                    <option value="11"> 서울특별시</option>
+                    <option value="36"> 세종특별자치시</option>
+                    <option value="31"> 울산광역시</option>
+                    <option value="28"> 인천광역시</option>
+                    <option value="46"> 전라남도</option>
+                    <option value="45"> 전라북도</option>
+                    <option value="50"> 제주특별자치도</option>
+                    <option value="44"> 충청남도</option>
+                    <option value="43"> 충청북도</option>
+                </select>
+            </div>
+            <div class="col">
+                <select name="selTwo" id="selTwo" onchange="showsigungu(this),doDisplay()">
+                    <option style="color: white" value="default">---시,군,구---</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <div id="name">
+            <ul id="name_ul"></ul>
+            <div id="pagination"></div>
+        </div>
+    </div>
+    {% endblock contents %}
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+{% block script %}
+<script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c55662432b507052ca033688d489176c&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="static/js/map1.js"></script>
+<script type="text/javascript" src="static/js/search.js"></script>
+{% endblock script %}
+</body>
+</html>
