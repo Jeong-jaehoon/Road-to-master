@@ -201,7 +201,7 @@ suppressPackageStartupMessages({
   
 })
 
-register_google(key = 'AIzaSyBxMbAVbI9xAJxb6JC7VJoo_2rWwxbN7FA')
+register_google(key = '***')
 
 temp %>% summary
 
