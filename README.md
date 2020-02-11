@@ -13,7 +13,8 @@
   
   #### 1-5 linear regression lecture final project
   
-
+  #### 1-6 Gis final project
+  
 ### 2.  Intelligence and Information Systems Course in Korea university (Kdata)
 
   #### 2-1 Advanced Python
