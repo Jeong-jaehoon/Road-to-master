@@ -3,17 +3,17 @@
 
 ### 1.  lecture final project with R programming
   
-  #### 1-1 Time-series analysis project
+    #### 1-1 Time-series analysis project
   
-  #### 1-2 Bigdata project
+    #### 1-2 Bigdata project
   
-  #### 1-3 Data Mining project
+    #### 1-3 Data Mining project
   
-  #### 1-4 Graduation assignment in Data analysis lecture (time-series data)
+    #### 1-4 Graduation assignment in Data analysis lecture (time-series data)
   
-  #### 1-5 linear regression lecture final project
+    #### 1-5 linear regression lecture final project
   
-  #### 1-6 Gis final project
+    #### 1-6 Gis final project
   
 ### 2.  Intelligence and Information Systems Course in Korea university (Kdata)
 
