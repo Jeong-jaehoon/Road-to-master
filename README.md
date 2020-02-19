@@ -1,5 +1,5 @@
-# road_to_master
-#### road to master degree
+# Road_to_master
+#### Road to master degree
 
 ### 1.  lecture final project with R programming
   
